@@ -1,6 +1,6 @@
 # sparse-set
 
-TODO: Write a description here
+A (sparse set)[https://programmingpraxis.com/2012/03/09/sparse-sets/] implementation in Crystal.
 
 ## Installation
 
@@ -18,13 +18,11 @@ TODO: Write a description here
 
 ```crystal
 require "sparse-set"
+
+SparseSet.new
+
+...TODO...
 ```
-
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
 
 ## Contributing
 
