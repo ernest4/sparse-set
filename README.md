@@ -1,6 +1,6 @@
 # sparse-set
 
-A (sparse set)[https://programmingpraxis.com/2012/03/09/sparse-sets/] implementation in Crystal.
+A [sparse set](https://programmingpraxis.com/2012/03/09/sparse-sets/) implementation in Crystal.
 
 Goal of sparse set is to trade memory for performance. The aim of the implementation is to provide
 the following Big O performance:
