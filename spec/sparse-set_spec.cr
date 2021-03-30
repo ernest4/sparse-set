@@ -37,11 +37,90 @@ Spectator.describe SparseSet::SparseSet do
   end
 
   describe "#get" do
-    # TODO: ...
+    before_each { subject.add(item) }
+
+    context "when sparse set has the item" do
+      it "returns the item" do
+        expect(subject.get(item.id)).to be item
+        expect(subject.get(item.id).try &.id).to eq item.id
+      end
+    end
+
+    context "when sparse set does not have the item" do
+      context "when item never existed" do
+        it "returns nil" do
+          expect(subject.get(item2.id)).to eq nil
+        end
+      end
+
+      context "when items was added" do
+        context "when items was removed" do
+          before_each { subject.remove(item) }
+
+          it "returns nil" do
+            expect(subject.get(item.id)).to eq nil
+          end
+        end
+
+        context "when all items were cleared" do
+          before_each { subject.clear }
+
+          it "returns nil" do
+            expect(subject.get(item.id)).to eq nil
+          end
+        end
+      end
+    end
   end
 
   describe "#remove" do
-    # TODO: ...
+    context "when sparse set has the item" do
+      before_each { subject.add(item) }
+
+      it "returns removed item's id" do
+        expect(subject.remove(item)).to eq item.id
+      end
+
+      it "allows you to remove item by id" do
+        expect(subject.remove(item.id)).to eq item.id
+      end
+
+      it "reduces sparse set's size" do
+        expect { subject.remove(item) }.to change { subject.size }.from(1).to(0)
+      end
+    end
+
+    context "when sparse set does not have the item" do
+      context "when item never existed" do
+        it "returns nil" do
+          expect(subject.remove(item2.id)).to eq nil
+        end
+      end
+
+      context "when items was added" do
+        context "when items was removed" do
+          before_each { subject.remove(item) }
+
+          it "returns nil" do
+            expect(subject.remove(item.id)).to eq nil
+          end
+
+          context "when removing item with same id (before it was even added)" do
+            it "returns nil" do 
+              expect(subject.remove(TestyItem.new(item.id))).to eq nil
+            end
+          end
+        end
+
+        context "when all items were cleared" do
+          before_each { subject.clear }
+
+          it "returns nil" do
+            expect(subject.remove(item.id)).to eq nil
+          end
+        end
+      end
+    end
   end
 
   describe "#clear" do
