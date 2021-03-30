@@ -1,0 +1,15 @@
+name: sparse-set
+version: 0.1.0
+
+authors:
+  - Ernestas Monkevicius <ernestas.monkevicius@ucdconnect.ie>
+
+development_dependencies:
+  spectator:
+    gitlab: arctic-fox/spectator
+    version: ~> 0.9.33
+
+
+crystal: 1.0.0
+
+license: MIT
