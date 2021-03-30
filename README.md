@@ -17,6 +17,7 @@ the following Big O performance:
    dependencies:
      sparse-set:
        github: ernest4/sparse-set
+       version: "~> 1.0.1"
    ```
 
 2. Run `shards install`
