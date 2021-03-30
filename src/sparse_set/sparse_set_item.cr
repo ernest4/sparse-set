@@ -1,6 +1,6 @@
 module SparseSet
   class Item
-    property :id
+    getter :id
   
     def initialize(id : Int32)
       @id = id
