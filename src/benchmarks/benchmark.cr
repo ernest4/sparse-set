@@ -17,21 +17,21 @@ items.each {|item| hashy[item.id] = item }
 
 Benchmark.ips do |x|
   x.report("SparseSet iteration of #{items.size} items") do
-    sparse_set.stream { |item| item }
+    sparse_set.stream { |item| item.id + 1 }
   end
 
   x.report("Array iteration of #{items.size} items") do
-    items.each { |item| item }
+    items.each { |item| item.id + 1 }
   end
 
   x.report("Hash values iteration of #{items.size} items") do
-    hashy.values.each { |item| item }
+    hashy.values.each { |item| item.id + 1 }
   end
 
   x.report("While values iteration A of #{items.size} items") do
     i = 0
     while i < count
-      items[i]
+      items[i].id + 1
       i += 1
     end
   end
@@ -39,7 +39,7 @@ Benchmark.ips do |x|
   x.report("While values iteration B of #{items.size} items") do
     i = -1
     while (i += 1) < count
-      items[i]
+      items[i].id + 1
     end
   end
 end
