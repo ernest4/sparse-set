@@ -1,3 +1,5 @@
+require "iterator"
+
 module SparseSet
   class SparseSet
     def initialize
@@ -55,10 +57,9 @@ module SparseSet
     end
   
     def stream
-      i = 0
-      while i < @element_count
+      i = -1
+      while (i += 1) < @element_count
         yield @dense_list[i]
-        i += 1
       end
     end
   end
